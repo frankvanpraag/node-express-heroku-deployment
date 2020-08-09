@@ -5,13 +5,13 @@ app.get('/', (req, res) => {
   res.send("Hello World!");
 });
 
-app.get('/time', (req, res) => {
+app.get('/date', (req, res) => {
   console.log('Getting time...');
   // Extract some parameters
   var name = req.query.name;
   if(name == '')
     name = 'unknown';
-  res.send({ info: 'Your name is req.query.name' , serverTime: Time.now(), serverDate: Date.now(), result: 'success', rc: 0 });
+  res.send({ info: 'Your name is req.query.name', serverDate: Date.now(), result: 'success', rc: 0 });
 });
 
 const PORT = process.env.PORT || 3001;
