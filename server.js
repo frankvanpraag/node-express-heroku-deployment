@@ -6,13 +6,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/time', (req, res) => {
-  res.send("{ timestamp : " & Date.now() & " }");
+  console.log('Getting time...');
+  // Extract some parameters
+  var name = req.query.name;
+  if name == '' then name = 'unknown';
+  res.send({ info: 'Your name is req.query.name' , serverTime: Time.now(), serverDate: Date.now(), result: 'success', rc: 0 });
 });
-
-app.get('/date', (req, res) => {
-  res.send("{ timestamp : " & Date.now() & " }");
-});
-
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT);
