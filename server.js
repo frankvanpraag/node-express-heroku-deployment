@@ -9,7 +9,8 @@ app.get('/time', (req, res) => {
   console.log('Getting time...');
   // Extract some parameters
   var name = req.query.name;
-  if name == '' then name = 'unknown';
+  if(name == '')
+    name = 'unknown';
   res.send({ info: 'Your name is req.query.name' , serverTime: Time.now(), serverDate: Date.now(), result: 'success', rc: 0 });
 });
 
