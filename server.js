@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/date', (req, res) => {
-  console.log('Getting time...');
+  console.log('Hello world...');
   // Extract some parameters
   var name = req.query.name;
   if(name == '')
