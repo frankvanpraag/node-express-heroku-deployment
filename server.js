@@ -11,7 +11,7 @@ app.get('/date', (req, res) => {
   var name = req.query.name;
   if(name == '')
     name = 'unknown';
-  res.send({ info: 'Your name is req.query.name', serverDate: Date.now(), result: 'success', rc: 0 });
+  res.send({ info: 'Your name is ' + name, serverDate: Date.now().toString(), result: 'success', rc: 0 });
 });
 
 const PORT = process.env.PORT || 3001;
