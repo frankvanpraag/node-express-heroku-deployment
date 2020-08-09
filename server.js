@@ -11,7 +11,13 @@ app.get('/date', (req, res) => {
   var name = req.query.name;
   if(name == '')
     name = 'unknown';
-  res.send({ info: 'Your name is ' + name, serverDate: Date.now().toString(), result: 'success', rc: 0 });
+  var currentDate = new Date();
+  var date = currentDate.getDate();
+  var month = currentDate.getMonth(); 
+  var year = currentDate.getFullYear();
+  var niceDate = date + '/' + month + '/' + year;
+
+  res.send({ info: 'Your name is ' + name, serverDate: niceDate, result: 'success', rc: 0 });
 });
 
 const PORT = process.env.PORT || 3001;
