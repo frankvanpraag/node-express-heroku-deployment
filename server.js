@@ -2,23 +2,29 @@ const express = require('express');
 const app = express();
 
 var colours = {
-  Jim = 'Blue',
-  Dwight = 'Orange',
-  Pam = 'Red',
-  Michael = 'Blue',
-  Toby = 'Grey',
-  Creed = 'Black',
-  Andy = 'Purple',
-  Unknown = 'Unknown'};
+  Jim : 'Blue',
+  Dwight : 'Orange',
+  Pam : 'Red',
+  Michael : 'Blue',
+  Toby : 'Grey',
+  Creed : 'Black',
+  Andy : 'Purple',};
+
 
 app.get('/colour', (req, res) => {
     console.log('Hello world...');
     // Extract some parameters
     var name = req.query.name;
-    if(name == '')
-      name = 'Unknown';
+    if(name == '') {
+       name = 'Unknown'; 
+    }
+
+    if (Object.keys(colours).indexOf(name) > -1) {
+         var colour = colours.name;
+      } else {
+        var colour = 'unknown';
+      }
     
-    var colour = colours.name;
     res.send({ info: colour, result: 'success', rc: 0 });
 
   });
