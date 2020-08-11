@@ -22,7 +22,10 @@ app.get('/colour', (req, res) => {
     if (name in colours) {
       var colour = colours.name;
     };  
-    res.send({ info: name, result: 'success', rc: 0 });
+  if (name in colours) {
+      var colour = 'unknown';
+    };  
+    res.send({ info: colour, result: 'success', rc: 0 });
 
   });
 
