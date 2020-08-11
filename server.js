@@ -8,7 +8,7 @@ var colours = {
   Michael : 'blue',
   Toby : 'grey',
   Creed : 'black',
-  Andy : 'purple',};
+  Andy : 'purple'};
 
 
 app.get('/colour', (req, res) => {
@@ -20,7 +20,7 @@ app.get('/colour', (req, res) => {
     }
 
     if (name in colours) {
-      var colour = colours.name;
+      var colour = colours[name];
     };  
   if (!(name in colours)) {
       var colour = 'unknown';
