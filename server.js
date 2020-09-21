@@ -51,7 +51,7 @@ var options = {
   headers: {
     'Content-Type': 'application/json; charset=utf-8',
     'Accept': 'application/json',
-    'Content-Length': data.length
+    'Content-Length': data.length,
     'Authorization': 'Bearer ' + devId,
     'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
   }
