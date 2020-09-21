@@ -19,6 +19,7 @@ app.get('/colour', (req, res) => {
        name = 'unknown'; 
     }
 
+ 
     if (name in colours) {
       var colour = colours[name];
     };  
@@ -33,16 +34,9 @@ app.get('/disable', (req, res) => {
 
     // Extract some parameters
     var devId = req.query.devId;
-    if(name == '') {
-       name = 'unknown'; 
-    }
+    var auth = req.query.auth;
   // Call SOTI here
-    if (name in colours) {
-      var colour = colours[name];
-    };  
-  if (!(name in colours)) {
-      var colour = 'unknown';
-    };  
+  
     res.send({ info: colour, result: 'success', rc: 0 });
 
   });
@@ -50,10 +44,9 @@ app.get('/disable', (req, res) => {
 app.get('/enable', (req, res) => {
 
     // Extract some parameters
-    var name = req.query.name;
-    if(name == '') {
-       name = 'unknown'; 
-    }
+    var devId = req.query.devId;
+    var auth = req.query.auth;
+  
 
     if (name in colours) {
       var colour = colours[name];
@@ -61,6 +54,11 @@ app.get('/enable', (req, res) => {
   if (!(name in colours)) {
       var colour = 'unknown';
     };  
+  
+  
+  
+  
+  
     res.send({ info: colour, result: 'success', rc: 0 });
 
   });
