@@ -35,6 +35,19 @@ app.get('/disable', (req, res) => {
     // Extract some parameters
     var devId = req.query.devId;
     var auth = req.query.auth;
+  
+  if (devId = null) {
+      res.send({ Message: 'no id received'});
+    }
+  if (auth = null) {
+      res.send({ Message: 'no id received'});
+    }
+  if (devId = '') {
+      res.send({ Message: 'no id received'});
+    }
+  if (auth = '') {
+      res.send({ Message: 'no id received'});
+    }
   // Call SOTI here
   
   
