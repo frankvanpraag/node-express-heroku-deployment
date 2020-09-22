@@ -31,19 +31,23 @@ app.get('/colour', (req, res) => {
   });
 
 app.get('/disable', (req, res) => {
+  
+  // Extract some parameters from qualtrics
+  const devId = req.query.devId;
+  const auth = req.query.auth;
+  if (devId !=null) {
+    res.send({ Message: 'value received'});
 
-    // Extract some parameters from qualtrics
-    const devId = req.query.devId;
-    const auth = req.query.auth;
+  }
   
-  // Call SOTI here
   
-const http = require('https');
+// Call SOTI here
+const https = require('https');
 
 //build the mobicontrol request
 const options = {
   host: 's111720.mobicontrolcloud.com',
-  port: '443',
+  port: 443,
   path: '/MobiControl/api/devices/' + devId + '/parentPath',
   method: 'PUT',
   headers: {
@@ -55,31 +59,23 @@ const options = {
 };
 
 
-http.request(options);
 
-/* commented out since i dont know how to get data yet
-const req2 = http.request(options, function(res2) {
-  const msg = '';
 
-  res2.setEncoding('utf8');
-  res2.on('data', function(chunk) {
-    msg += chunk;
-  });
-  res2.on('end', function() {
-    console.log(JSON.parse(msg));
-  });
+const req2 = https.request(options, function(res2) {
+  res.on('data', (d) => {
+  process.stdout.write(d);
+});
 });
 
 
-req2.write(data);
 req2.end();
-  */
-  //end soti call
+  
+//end soti call
   
   
-  res.send({ Message: 'reached end of block'});
+//res.send({ Message: 'reached end of block'});
 
-  });
+});
 
 // testing alternate code
 //const disreq = new XMLHttpRequest();
@@ -93,12 +89,12 @@ app.get('/enable', (req, res) => {
     // Extract some parameters
     const devId = req.query.devId;
     const auth = req.query.auth;
-  const http = require('https');
+  const https = require('https');
 
 
 const options = {
   host: 's111720.mobicontrolcloud.com',
-  port: '443',
+  port: 443,
   path: '/MobiControl/api/devices/' + devId + '/parentPath',
   method: 'PUT',
   headers: {
@@ -109,11 +105,18 @@ const options = {
   }
 }
 
-http.request(options);
-  
-res.send({ Message: 'reached end of block'});
+const req2 = https.request(options, function(res2) {
 
+  
+  res.on('data', (d) => {
+    process.stdout.write(d);
   });
+});
+
+
+req2.end();
+res.send({ Message: 'reached end of block'});
+});
 
 
 const PORT = process.env.PORT || 3001;
