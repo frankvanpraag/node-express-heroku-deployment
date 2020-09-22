@@ -36,18 +36,6 @@ app.get('/disable', (req, res) => {
     var devId = req.query.devId;
     var auth = req.query.auth;
   
-  if (devId = null) {
-      res.send({ Message: 'no id received'});
-    }
-  if (auth = null) {
-      res.send({ Message: 'no id received'});
-    }
-  if (devId = '') {
-      res.send({ Message: 'no id received'});
-    }
-  if (auth = '') {
-      res.send({ Message: 'no id received'});
-    }
   // Call SOTI here
   res.send({ Message: 'success'});
   
@@ -65,7 +53,7 @@ var options = {
     'Content-Type': 'application/json; charset=utf-8',
     'Accept': 'application/json',
     'Content-Length': data.length,
-    'Authorization': 'Bearer ' + devId,
+    'Authorization': 'Bearer ' + auth,
     'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
   }
 };
