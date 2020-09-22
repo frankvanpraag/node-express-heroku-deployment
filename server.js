@@ -14,17 +14,17 @@ var colours = {
 app.get('/colour', (req, res) => {
   
     // Extract some parameters
-    var name = req.query.name;
+    const name = req.query.name;
     if(name == '') {
        name = 'unknown'; 
     }
 
  
     if (name in colours) {
-      var colour = colours[name];
+      const colour = colours[name];
     };  
   if (!(name in colours)) {
-      var colour = 'unknown';
+      const colour = 'unknown';
     };  
     res.send({ info: colour, result: 'success', rc: 0 });
 
@@ -33,16 +33,14 @@ app.get('/colour', (req, res) => {
 app.get('/disable', (req, res) => {
 
     // Extract some parameters
-    var devId = req.query.devId;
-    var auth = req.query.auth;
+    const devId = req.query.devId;
+    const auth = req.query.auth;
   
   // Call SOTI here
-  res.send({ Message: 'success'});
   
-  var http = require('https');
+  const http = require('https');
 
-//Bricked Group: 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7’
-var options = {
+const options = {
   host: 's111720.mobicontrolcloud.com',
   port: '443',
   path: '/MobiControl/api/devices/' + devId + '/parentPath',
@@ -51,12 +49,12 @@ var options = {
     'Content-Type': 'application/json; charset=utf-8',
     'Accept': 'application/json',
     'Authorization': 'Bearer ' + auth,
-    'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7’
+    'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'
   }
 };
 
-var req2 = http.request(options, function(res2) {
-  var msg = '';
+const req2 = http.request(options, function(res2) {
+  const msg = '';
 
   res2.setEncoding('utf8');
   res2.on('data', function(chunk) {
@@ -67,26 +65,33 @@ var req2 = http.request(options, function(res2) {
   });
 });
 
+
 req2.write(data);
 req2.end();
   
   //end soti call
   
   
- 
+  res.send({ Message: 'success'});
 
   });
+
+// testing new code
+//const disreq = new XMLHttpRequest();
+//disreq.open('PUT', 'https://s111720.mobicontrolcloud.com/MobiControl/api/devices/' + devId + '/parentPath');
+//disreq.responseType = 'application/json';
+//disreq.send();
 
 
 app.get('/enable', (req, res) => {
 
     // Extract some parameters
-    var devId = req.query.devId;
-    var auth = req.query.auth;
-  var http = require('https');
+    const devId = req.query.devId;
+    const auth = req.query.auth;
+  const http = require('https');
 
 
-var options = {
+const options = {
   host: 's111720.mobicontrolcloud.com',
   port: '443',
   path: '/MobiControl/api/devices/' + devId + '/parentPath',
@@ -135,7 +140,7 @@ module.exports.getJSON = (options, onResult) => {
   
   
   
-    res.send({ info: colour, result: 'success', rc: 0 });
+res.send({ Message: 'success'});
 
   });
 
