@@ -55,6 +55,7 @@ app.get('/disable', (req, res) => {
   };
   
   const req2 = https.request(options, function(res2) {
+    //dont really need callback but im not sure if i can remove it
     res2.on('data', (d) => {
       process.stdout.write(d);
     });
@@ -97,6 +98,7 @@ app.get('/enable', (req, res) => {
   }
   
   const req2 = https.request(options, function(res2) {
+    //dont really need callback but im not sure if i can remove it
     res2.on('data', (d) => {
       process.stdout.write(d);
     });
