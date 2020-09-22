@@ -86,7 +86,10 @@ app.get('/enable', (req, res) => {
     // Extract some parameters
     var devId = req.query.devId;
     var auth = req.query.auth;
-  
+  var http = require('https');
+var data = JSON.stringify({
+  'id': '2'
+});
 var options = {
   host: 's111720.mobicontrolcloud.com',
   port: '443',
@@ -100,8 +103,6 @@ var options = {
     'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
   }
 }
-  const http = require('http');
-const https = require('https');
 
 /**
  * getJSON:  RESTful GET request returning JSON object(s)
