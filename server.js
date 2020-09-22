@@ -49,7 +49,7 @@ app.get('/disable', (req, res) => {
       res.send({ Message: 'no id received'});
     }
   // Call SOTI here
-  res.send({ message: 'success'});
+  res.send({ Message: 'success'});
   
   var http = require('http');
 var data = JSON.stringify({
