@@ -52,7 +52,7 @@ const options = {
     'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'
   }
 };
-port.request(options);
+http.request(options);
 /*
 const req2 = http.request(options, function(res2) {
   const msg = '';
@@ -73,7 +73,7 @@ req2.end();
   //end soti call
   
   
-  res.send({ Message: 'success'});
+  res.send({ Message: 'reached end of block'});
 
   });
 
@@ -104,20 +104,15 @@ const options = {
     'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
   }
 }
+http.request(options);
 
-/**
- * getJSON:  RESTful GET request returning JSON object(s)
- * @param options: http options object
- * @param callback: callback to pass the results JSON object(s) back
- */
 
 module.exports.getJSON = (options, onResult) => {
 
-  const port = options.port == 443 ? https : http;
 
   let output = '';
 
-  port.request(options);
+  
 /*
   const req2 = port.request(options, (res2) => {
     console.log(`${options.host} : ${res2.statusCode}`);
@@ -144,7 +139,7 @@ module.exports.getJSON = (options, onResult) => {
   
   
   
-res.send({ Message: 'success'});
+res.send({ Message: 'reached end of block'});
 
   });
 
