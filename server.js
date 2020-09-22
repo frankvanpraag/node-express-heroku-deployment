@@ -52,7 +52,8 @@ const options = {
     'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'
   }
 };
-
+port.request(options);
+/*
 const req2 = http.request(options, function(res2) {
   const msg = '';
 
@@ -68,7 +69,7 @@ const req2 = http.request(options, function(res2) {
 
 req2.write(data);
 req2.end();
-  
+  */
   //end soti call
   
   
@@ -116,6 +117,8 @@ module.exports.getJSON = (options, onResult) => {
 
   let output = '';
 
+  port.request(options);
+/*
   const req2 = port.request(options, (res2) => {
     console.log(`${options.host} : ${res2.statusCode}`);
     res2.setEncoding('utf8');
@@ -136,6 +139,7 @@ module.exports.getJSON = (options, onResult) => {
   });
 
   req2.end();
+  */
 };
   
   
