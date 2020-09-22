@@ -55,7 +55,7 @@ app.get('/disable', (req, res) => {
   };
   
   const req2 = https.request(options, function(res2) {
-    res.on('data', (d) => {
+    res2.on('data', (d) => {
       process.stdout.write(d);
     });
   });
@@ -66,7 +66,7 @@ app.get('/disable', (req, res) => {
   //end soti call
   
   
-  //res.send({ Message: 'reached end of block'});
+  res.send({ Message: 'reached end of block'});
 });
 
 // testing alternate code
@@ -97,7 +97,7 @@ app.get('/enable', (req, res) => {
   }
   
   const req2 = https.request(options, function(res2) {
-    res.on('data', (d) => {
+    res2.on('data', (d) => {
       process.stdout.write(d);
     });
   });
