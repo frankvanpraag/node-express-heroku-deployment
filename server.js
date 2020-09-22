@@ -32,28 +32,32 @@ app.get('/colour', (req, res) => {
 
 app.get('/disable', (req, res) => {
 
-    // Extract some parameters
+    // Extract some parameters from qualtrics
     const devId = req.query.devId;
     const auth = req.query.auth;
   
   // Call SOTI here
   
-  const http = require('https');
+const http = require('https');
 
+//build the mobicontrol request
 const options = {
   host: 's111720.mobicontrolcloud.com',
   port: '443',
   path: '/MobiControl/api/devices/' + devId + '/parentPath',
   method: 'PUT',
   headers: {
-    'Content-Type': 'application/json; charset=utf-8',
+    'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Authorization': 'Bearer ' + auth,
     'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'
   }
 };
+
+
 http.request(options);
-/*
+
+/* commented out since i dont know how to get data yet
 const req2 = http.request(options, function(res2) {
   const msg = '';
 
@@ -77,7 +81,7 @@ req2.end();
 
   });
 
-// testing new code
+// testing alternate code
 //const disreq = new XMLHttpRequest();
 //disreq.open('PUT', 'https://s111720.mobicontrolcloud.com/MobiControl/api/devices/' + devId + '/parentPath');
 //disreq.responseType = 'application/json';
@@ -98,46 +102,14 @@ const options = {
   path: '/MobiControl/api/devices/' + devId + '/parentPath',
   method: 'PUT',
   headers: {
-    'Content-Type': 'application/json; charset=utf-8',
+    'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Authorization': 'Bearer ' + auth,
     'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
   }
 }
+
 http.request(options);
-
-
-module.exports.getJSON = (options, onResult) => {
-
-
-  let output = '';
-
-  
-/*
-  const req2 = port.request(options, (res2) => {
-    console.log(`${options.host} : ${res2.statusCode}`);
-    res2.setEncoding('utf8');
-
-    res2.on('data', (chunk) => {
-      output += chunk;
-    });
-
-    res2.on('end', () => {
-      let obj = JSON.parse(output);
-
-      onResult(res2.statusCode, obj);
-    });
-  });
-
-  req2.on('error', (err) => {
-    // res.send('error: ' + err.message);
-  });
-
-  req2.end();
-  */
-};
-  
-  
   
 res.send({ Message: 'reached end of block'});
 
