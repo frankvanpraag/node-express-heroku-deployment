@@ -40,9 +40,7 @@ app.get('/disable', (req, res) => {
   res.send({ Message: 'success'});
   
   var http = require('https');
-var data = JSON.stringify({
-  'id': '2'
-});
+
 //Bricked Group: 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7’
 var options = {
   host: 's111720.mobicontrolcloud.com',
@@ -52,26 +50,25 @@ var options = {
   headers: {
     'Content-Type': 'application/json; charset=utf-8',
     'Accept': 'application/json',
-    'Content-Length': data.length,
     'Authorization': 'Bearer ' + auth,
     'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7’
   }
 };
 
-var req = http.request(options, function(res) {
+var req2 = http.request(options, function(res2) {
   var msg = '';
 
-  res.setEncoding('utf8');
-  res.on('data', function(chunk) {
+  res2.setEncoding('utf8');
+  res2.on('data', function(chunk) {
     msg += chunk;
   });
-  res.on('end', function() {
+  res2.on('end', function() {
     console.log(JSON.parse(msg));
   });
 });
 
-req.write(data);
-req.end();
+req2.write(data);
+req2.end();
   
   //end soti call
   
@@ -87,9 +84,8 @@ app.get('/enable', (req, res) => {
     var devId = req.query.devId;
     var auth = req.query.auth;
   var http = require('https');
-var data = JSON.stringify({
-  'id': '2'
-});
+
+
 var options = {
   host: 's111720.mobicontrolcloud.com',
   port: '443',
@@ -98,7 +94,6 @@ var options = {
   headers: {
     'Content-Type': 'application/json; charset=utf-8',
     'Accept': 'application/json',
-    'Content-Length': data.length,
     'Authorization': 'Bearer ' + auth,
     'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
   }
@@ -111,31 +106,31 @@ var options = {
  */
 
 module.exports.getJSON = (options, onResult) => {
-  console.log('rest::getJSON');
+
   const port = options.port == 443 ? https : http;
 
   let output = '';
 
-  const req = port.request(options, (res) => {
-    console.log(`${options.host} : ${res.statusCode}`);
-    res.setEncoding('utf8');
+  const req2 = port.request(options, (res2) => {
+    console.log(`${options.host} : ${res2.statusCode}`);
+    res2.setEncoding('utf8');
 
-    res.on('data', (chunk) => {
+    res2.on('data', (chunk) => {
       output += chunk;
     });
 
-    res.on('end', () => {
+    res2.on('end', () => {
       let obj = JSON.parse(output);
 
-      onResult(res.statusCode, obj);
+      onResult(res2.statusCode, obj);
     });
   });
 
-  req.on('error', (err) => {
+  req2.on('error', (err) => {
     // res.send('error: ' + err.message);
   });
 
-  req.end();
+  req2.end();
 };
   
   
