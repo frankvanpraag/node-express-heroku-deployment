@@ -39,7 +39,7 @@ app.get('/disable', (req, res) => {
   // Call SOTI here
   res.send({ Message: 'success'});
   
-  var http = require('http');
+  var http = require('https');
 var data = JSON.stringify({
   'id': '2'
 });
@@ -54,7 +54,7 @@ var options = {
     'Accept': 'application/json',
     'Content-Length': data.length,
     'Authorization': 'Bearer ' + auth,
-    'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
+    'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7’
   }
 };
 
@@ -80,22 +80,62 @@ req.end();
 
   });
 
-//'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d' enable path
+
 app.get('/enable', (req, res) => {
 
     // Extract some parameters
     var devId = req.query.devId;
     var auth = req.query.auth;
   
+var options = {
+  host: 's111720.mobicontrolcloud.com',
+  port: '443',
+  path: '/MobiControl/api/devices/' + devId + '/parentPath',
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json; charset=utf-8',
+    'Accept': 'application/json',
+    'Content-Length': data.length,
+    'Authorization': 'Bearer ' + auth,
+    'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
+  }
+}
+  const http = require('http');
+const https = require('https');
 
-    if (name in colours) {
-      var colour = colours[name];
-    };  
-  if (!(name in colours)) {
-      var colour = 'unknown';
-    };  
-  
-  
+/**
+ * getJSON:  RESTful GET request returning JSON object(s)
+ * @param options: http options object
+ * @param callback: callback to pass the results JSON object(s) back
+ */
+
+module.exports.getJSON = (options, onResult) => {
+  console.log('rest::getJSON');
+  const port = options.port == 443 ? https : http;
+
+  let output = '';
+
+  const req = port.request(options, (res) => {
+    console.log(`${options.host} : ${res.statusCode}`);
+    res.setEncoding('utf8');
+
+    res.on('data', (chunk) => {
+      output += chunk;
+    });
+
+    res.on('end', () => {
+      let obj = JSON.parse(output);
+
+      onResult(res.statusCode, obj);
+    });
+  });
+
+  req.on('error', (err) => {
+    // res.send('error: ' + err.message);
+  });
+
+  req.end();
+};
   
   
   
