@@ -31,50 +31,42 @@ app.get('/colour', (req, res) => {
   });
 
 app.get('/disable', (req, res) => {
-  
   // Extract some parameters from qualtrics
   const devId = req.query.devId;
   const auth = req.query.auth;
-  if (devId !=null) {
-    res.send({ Message: 'value received'});
 
-  }
   
   
-// Call SOTI here
-const https = require('https');
+  // Call SOTI here
+  const https = require('https');
 
-//build the mobicontrol request
-const options = {
-  host: 's111720.mobicontrolcloud.com',
-  port: 443,
-  path: '/MobiControl/api/devices/' + devId + '/parentPath',
-  method: 'PUT',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': 'Bearer ' + auth,
-    'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'
-  }
-};
-
-
-
-
-const req2 = https.request(options, function(res2) {
-  res.on('data', (d) => {
-  process.stdout.write(d);
-});
-});
-
-
-req2.end();
+  //build the mobicontrol request
+  const options = {
+    host: 's111720.mobicontrolcloud.com',
+    port: 443,
+    path: '/MobiControl/api/devices/' + devId + '/parentPath',
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + auth,
+      'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'
+    }
+  };
   
-//end soti call
+  const req2 = https.request(options, function(res2) {
+    res.on('data', (d) => {
+      process.stdout.write(d);
+    });
+  });
+
+
+  req2.end();
+  
+  //end soti call
   
   
-//res.send({ Message: 'reached end of block'});
-
+  //res.send({ Message: 'reached end of block'});
 });
 
 // testing alternate code
@@ -85,37 +77,36 @@ req2.end();
 
 
 app.get('/enable', (req, res) => {
-
-    // Extract some parameters
-    const devId = req.query.devId;
-    const auth = req.query.auth;
+  // Extract some parameters
+  const devId = req.query.devId;
+  const auth = req.query.auth;
   const https = require('https');
 
 
-const options = {
-  host: 's111720.mobicontrolcloud.com',
-  port: 443,
-  path: '/MobiControl/api/devices/' + devId + '/parentPath',
-  method: 'PUT',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': 'Bearer ' + auth,
-    'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
+  const options = {
+    host: 's111720.mobicontrolcloud.com',
+    port: 443,
+    path: '/MobiControl/api/devices/' + devId + '/parentPath',
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + auth,
+      'newPath': 'referenceId:75e1cdac-030b-46f4-bd7d-316345ef0f1d'
+    }
   }
-}
-
-const req2 = https.request(options, function(res2) {
-
   
-  res.on('data', (d) => {
-    process.stdout.write(d);
+  const req2 = https.request(options, function(res2) {
+    res.on('data', (d) => {
+      process.stdout.write(d);
+    });
   });
-});
-
-
-req2.end();
-res.send({ Message: 'reached end of block'});
+  
+  
+  req2.end();
+  res.send({
+    Message: 'reached end of block'}
+    );
 });
 
 
