@@ -89,7 +89,7 @@ req.end();
   
   
   
-    res.send({ info: colour, result: 'success', rc: 0 });
+    res.send({ message: 'success'});
 
   });
 
