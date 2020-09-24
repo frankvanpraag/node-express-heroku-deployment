@@ -48,8 +48,6 @@ app.get('/disable', (req, res) => {
     host: '2aee86ecb4940555cf2afa068d2ba5a8.m.pipedream.net', 
     port: 443,
     path: '/MobiControl/api/devices/' + devId + '/parentPath',
-    body: '\'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7\'',
-    bodyRaw: '\'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7\'',
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -63,7 +61,7 @@ app.get('/disable', (req, res) => {
     
   const req2 = https.request(options, function(res2) {
     //dont really need callback but im not sure if i can remove it
-    res2.on('data', (d) => {
+    res2.on('referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7', (d) => {
       process.stdout.write(d);
     });
   });
