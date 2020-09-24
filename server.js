@@ -60,7 +60,7 @@ app.get('/disable', (req, res) => {
     body: JSON.stringify("'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'"),    
   };
   
-  process.stdout.write(options);
+  process.stdout.write(JSON.stringify(options));
   process.stdout.write('------');
   
   const req2 = https.request(options, function(res2) {
