@@ -55,7 +55,10 @@ app.get('/disable', (req, res) => {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': 'Bearer ' + auth,
+      'Authorization': 'Bearer ' + auth
+    },
+    body: { 
+      'deviceId': devId,  
       'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'
     }
   };
