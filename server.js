@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-
+const request = require('request');
+const https = require('https'); //  xxx
+ 
 var colours = {
   Jim : 'blue',
   Dwight : 'orange',
@@ -40,11 +42,6 @@ app.get('/disable', (req, res) => {
   // Extract some parameters from qualtrics
   const devId = req.query.devId;
   const auth = req.query.auth;
-  dd = 'Hi';   
-  
-  
-  // Call SOTI here
-  const https = require('https');
 
   //build the mobicontrol request
   const options = {
@@ -56,20 +53,25 @@ app.get('/disable', (req, res) => {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ' + auth
-    },
-    body: "'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'"    
+    }
   };
   
   process.stdout.write(JSON.stringify(options));
   process.stdout.write('\n------\n');
   
-  const req2 = https.request(options, function(res2) {
-    //dont really need callback but im not sure if i can remove it
-    res2.on('data', (d) => {
-      process.stdout.write(d);
-      dd = d;      
-    });
+  request.put(options, (err, res, 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7') => {
+      if (err) {
+          process.stdout.write(err);
+      }
+    process.stdout.write('Status Code:', res.statusCode);
   });
+  
+//   const req2 = https.request(options, function(res2) {
+//     //dont really need callback but im not sure if i can remove it
+//     res2.on('data', (d) => {
+//       process.stdout.write(d);
+//     });
+//   });
 
 
   req2.end();
@@ -77,7 +79,7 @@ app.get('/disable', (req, res) => {
   //end soti call
   
   
-  res.send({ Message: dd});
+  res.send({ Message: 'done' });
 });
 
 // testing alternate code
@@ -91,8 +93,6 @@ app.get('/enable', (req, res) => {
   // Extract some parameters
   const devId = req.query.devId;
   const auth = req.query.auth;
-  const https = require('https');
-
 
   const options = {
     host: 's111720.mobicontrolcloud.com',
