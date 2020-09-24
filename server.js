@@ -57,7 +57,7 @@ app.get('/disable', (req, res) => {
       'Accept': 'application/json',
       'Authorization': 'Bearer ' + auth
     },
-    body: JSON.stringify("'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'"),    
+    body: JSON.stringify('referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'),    
   };
   
   process.stdout.write(JSON.stringify(options));
