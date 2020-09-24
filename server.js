@@ -11,6 +11,12 @@ var colours = {
   Andy : 'purple'};
 
 
+app.get('/hello', (req, res) => {  
+    res.send({ info: 'hello', result: 'success', rc: 0 });
+
+  });
+
+
 app.get('/colour', (req, res) => {
   
     // Extract some parameters
