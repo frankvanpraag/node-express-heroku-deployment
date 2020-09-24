@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const request = require('request');
 const https = require('https'); //  xxx
  
 var colours = {
@@ -48,6 +47,7 @@ app.get('/disable', (req, res) => {
     host: 's111720.mobicontrolcloud.com',
     port: 443,
     path: '/MobiControl/api/devices/' + devId + '/parentPath',
+    body: 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7',
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -58,20 +58,13 @@ app.get('/disable', (req, res) => {
   
   process.stdout.write(JSON.stringify(options));
   process.stdout.write('\n------\n');
-  
-  request.put(options, (err, res, "'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'") => {
-      if (err) {
-          process.stdout.write(err);
-      }
-    process.stdout.write('Status Code:', res.statusCode);
+    
+  const req2 = https.request(options, function(res2) {
+    //dont really need callback but im not sure if i can remove it
+    res2.on('data', (d) => {
+      process.stdout.write(d);
+    });
   });
-  
-//   const req2 = https.request(options, function(res2) {
-//     //dont really need callback but im not sure if i can remove it
-//     res2.on('data', (d) => {
-//       process.stdout.write(d);
-//     });
-//   });
 
 
   req2.end();
