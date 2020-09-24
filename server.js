@@ -45,7 +45,7 @@ app.get('/disable', (req, res) => {
   //build the mobicontrol request
   const options = {
 //     host: 's111720.mobicontrolcloud.com', https://2aee86ecb4940555cf2afa068d2ba5a8.m.pipedream.net
-    host: 'https://2aee86ecb4940555cf2afa068d2ba5a8.m.pipedream.net', 
+    host: '2aee86ecb4940555cf2afa068d2ba5a8.m.pipedream.net', 
     port: 443,
     path: '/MobiControl/api/devices/' + devId + '/parentPath',
     body: 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7',
