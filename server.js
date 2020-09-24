@@ -40,7 +40,7 @@ app.get('/disable', (req, res) => {
   // Extract some parameters from qualtrics
   const devId = req.query.devId;
   const auth = req.query.auth;
-
+  dd = 'Hi';   
   
   
   // Call SOTI here
@@ -64,6 +64,7 @@ app.get('/disable', (req, res) => {
     //dont really need callback but im not sure if i can remove it
     res2.on('data', (d) => {
       process.stdout.write(d);
+      dd = d;      
     });
   });
 
@@ -73,7 +74,7 @@ app.get('/disable', (req, res) => {
   //end soti call
   
   
-  res.send({ Message: 'reached end of block'});
+  res.send({ Message: dd});
 });
 
 // testing alternate code
