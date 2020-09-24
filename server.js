@@ -57,9 +57,7 @@ app.get('/disable', (req, res) => {
       'Accept': 'application/json',
       'Authorization': 'Bearer ' + auth
     },
-    body: { 
-      'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'
-    }
+    body: 'newPath': 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'    
   };
   
   const req2 = https.request(options, function(res2) {
