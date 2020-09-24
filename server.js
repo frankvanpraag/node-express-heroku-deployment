@@ -47,7 +47,7 @@ app.get('/disable', (req, res) => {
     host: 's111720.mobicontrolcloud.com',
     port: 443,
     path: '/MobiControl/api/devices/' + devId + '/parentPath',
-    body: { newPath: 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7' } ,
+    body: { newPath: "'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'" } ,
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
