@@ -57,11 +57,11 @@ app.get('/disable', (req, res) => {
       'Accept': 'application/json',
       'Authorization': 'Bearer ' + auth
     },
-    body: JSON.stringify('referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'),    
+    body: ''referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7''),    
   };
   
   process.stdout.write(JSON.stringify(options));
-  process.stdout.write('------');
+  process.stdout.write('\n------\n');
   
   const req2 = https.request(options, function(res2) {
     //dont really need callback but im not sure if i can remove it
