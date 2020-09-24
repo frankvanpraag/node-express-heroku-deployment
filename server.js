@@ -48,7 +48,8 @@ app.get('/disable', (req, res) => {
     host: 'https://2aee86ecb4940555cf2afa068d2ba5a8.m.pipedream.net', 
     port: 443,
     path: '/MobiControl/api/devices/' + devId + '/parentPath',
-    body: { newPath: "'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7'" } ,
+    body: 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7',
+    bodyRaw: 'referenceId:dcacdec5-e9d2-43a8-bade-7baf7b19ccb7',
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
