@@ -11,6 +11,10 @@ var colours = {
   Creed : 'black',
   Andy : 'purple'};
 
+app.get('/', (req, res) => {  
+    res.send({ info: 'hello', url:  "https://qfrankp.au1.qualtrics.com/jfe/form/SV_0BeSLx9g9ECqJXU", result: 'success', rc: 0 });
+  });
+
 
 app.get('/hello', (req, res) => {  
     res.send({ info: 'hello', result: 'success', rc: 0 });
